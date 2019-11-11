@@ -10,7 +10,9 @@
     <modules>
         <module>Domain</module>
         <module>use-cases</module>
+        <module>infra</module>
     </modules>
+
     <packaging>pom</packaging>
 
     <name>com.paul cleancode</name>
