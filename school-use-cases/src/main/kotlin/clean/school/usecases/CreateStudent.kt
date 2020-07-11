@@ -2,7 +2,9 @@ package clean.school.usecases
 
 import clean.school.repository.IStudentRepository
 import clean.school.entity.Student
+import clean.school.exceptions.AlreadyExistsException
 import clean.school.exceptions.BaseException
+import clean.school.validation.BaseValidation
 
 class CreateStudent{
     var studentRepository: IStudentRepository 
@@ -15,12 +17,17 @@ class CreateStudent{
 
     // carry out the create user functionality
     fun execute(): Student {
-
-        if (!checkUniqueCredentials()) {
-            throw BaseException("Student with credentials " + student.toString() +" already exists in the system")
+        if (!credentialsAreUnique()) {
+            throw AlreadyExistsException("Student with credentials " + student.toString() +" already exists in the system")
+        } else if (!BaseValidation.validateEmail(student.email)){
+            throw BaseException("Email " + student.email + " is not a valid email")
+        } else if (BaseValidation.validateInputContainsSpecialCharacter(student.firstName)){
+            throw BaseException("First name cannot contain special characters. You used " + student.firstName + " as your first name")
+        } else if (BaseValidation.validateInputContainsSpecialCharacter(student.lastName)){
+            throw BaseException("Last Name cannot contain special characters. You used " + student.lastName + " as your last name")
         }
-        studentRepository.save(student)
-        return Student()
+
+        return studentRepository.save(student)
     }
 
     /*
@@ -31,11 +38,12 @@ class CreateStudent{
     * returns false otherwise
     * 
      */
-    fun checkUniqueCredentials(): Boolean{
-        if (studentRepository.findByEmail(student.email).is_default){
+    fun credentialsAreUnique(): Boolean{
+
+        // returns email is unique if the default response is returned
+        if (studentRepository.findByEmail(student.email).isDefault == false){
             return false
         }
         return true
-
     }
 }
