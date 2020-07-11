@@ -15,6 +15,7 @@
 
   <modules>  
     <module>school-domain</module>
+    <module>school-use-cases</module>
   </modules>
 
   <dependencies>
@@ -26,33 +27,9 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>#{junit.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
-
-  <build>
-    <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
-    <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
-      <plugins>
-        <plugin>
-          <groupId>org.jetbrains.kotlin</groupId>
-          <artifactId>kotlin-maven-plugin</artifactId>
-          <version>${kotlin.version}</version>
-
-          <executions>
-            <execution>
-              <id>compile</id>
-              <goals> <goal>compile</goal> </goals>
-            </execution>
-
-            <execution>
-              <id>test-compile</id>
-              <goals> <goal>test-compile</goal> </goals>
-            </execution>
-          </executions>
-        </plugin>
-      </plugins>
-  </build>
   
 </project>

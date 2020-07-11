@@ -7,14 +7,18 @@
     <artifactId>school-base</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
-
   <groupId>clean.school</groupId>
-  <artifactId>school-domain</artifactId>
+  <artifactId>school-use-cases</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>school-domain</name>
+  <name>school-use-cases</name>
   <url>http://maven.apache.org</url>
-
+  
   <dependencies>
+    <dependency>
+      <groupId>clean.school</groupId>
+      <artifactId>school-domain</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
     <dependency>
         <groupId>org.jetbrains.kotlin</groupId>
         <artifactId>kotlin-stdlib</artifactId>
