@@ -84,7 +84,7 @@ class TestCreateStudent {
             firstName = "Didier",
             lastName = "Drogba",
             email = "didier@ivorycoast.com",
-            password = "d1DierDr0gba"
+            password = "d1DierDr0gb@"
         )
     }
 }

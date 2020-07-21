@@ -26,7 +26,6 @@ class CreateStudent{
         } else if (BaseValidation.validateInputContainsSpecialCharacter(student.lastName)){
             throw BaseException("Last Name cannot contain special characters. You used " + student.lastName + " as your last name")
         }
-
         return studentRepository.save(student)
     }
 
