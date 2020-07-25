@@ -1,5 +1,6 @@
 package clean.school.usecases
 
+import clean.school.usecases.TestStudentRepo
 import clean.school.entity.Student
 import clean.school.exceptions.AlreadyExistsException
 import clean.school.exceptions.BaseException
@@ -8,7 +9,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
 class TestCreateStudent {
-    var repo = TestUserRepo()
+    var repo = TestStudentRepo()
 
     @Test
     fun createFirstBasicValueUser(){

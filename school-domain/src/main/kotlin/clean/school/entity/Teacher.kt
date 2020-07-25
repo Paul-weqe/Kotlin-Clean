@@ -1,7 +1,6 @@
 package clean.school.entity
 
 data class Teacher(
-    // var id: Int = 0,
     var firstName: String = "",
     var lastName: String = "",
     var email: String = "",

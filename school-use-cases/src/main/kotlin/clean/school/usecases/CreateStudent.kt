@@ -31,18 +31,17 @@ class CreateStudent{
 
     /*
     * checks if the credentials entered are unique
-    * for now, only email is checked
+    * for now, only email is checked. Will be improved in the future
     *
     * returns true if the credentials are unique
     * returns false otherwise
     * 
      */
     fun credentialsAreUnique(): Boolean{
-
-        // returns email is unique if the default response is returned
         if (studentRepository.findByEmail(student.email).isDefault == false){
             return false
         }
         return true
     }
+    
 }

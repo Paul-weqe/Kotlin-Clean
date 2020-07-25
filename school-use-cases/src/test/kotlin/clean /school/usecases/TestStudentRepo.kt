@@ -3,7 +3,7 @@ package clean.school.usecases
 import clean.school.repository.IStudentRepository
 import clean.school.entity.Student
 
-class TestUserRepo: IStudentRepository {
+class TestStudentRepo: IStudentRepository {
     var nextId = 1
     var students: MutableList<Student> = ArrayList()
 
