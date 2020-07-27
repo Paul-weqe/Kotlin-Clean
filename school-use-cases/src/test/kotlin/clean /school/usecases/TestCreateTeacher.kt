@@ -36,7 +36,7 @@ class TestCreateTeacher {
         var exception = assertFailsWith<AlreadyExistsException>{ 
             createTeacher.execute()
         }
-        assertEquals(exception.message, "Teacher with credentials " + createFirstTeacher().toString() +" already exists in the system")
+        assertEquals(exception.message, "credentials " + createFirstTeacher().toString() +" already exists in the system")
     }
 
     @Test
@@ -73,20 +73,23 @@ class TestCreateTeacher {
     }
 
     fun createFirstTeacher(): Teacher {
-        return Teacher(
-            firstName = "Paul",
-            lastName = "Scholes",
-            email = "paul.scholes@england.com",
-            password = "p@ulSchole5Pa55word"
-        )
+        var teacher = Teacher()
+        teacher.firstName = "Paul"
+        teacher.lastName = "Scholes"
+        teacher.email = "paul.scholes@england.com"
+        teacher.password = "p@ulSchole5Pa55word"
+        teacher.isDefault = false
+        return teacher
+
     }
 
     fun createSecondTeacher(): Teacher {
-        return Teacher(
-            firstName = "Didier",
-            lastName = "Drogba",
-            email = "didier@ivorycoast.com",
-            password = "d1DierDr0gb@"
-        )
+        var teacher = Teacher()
+        teacher.firstName = "Didier"
+        teacher.lastName = "Drogba"
+        teacher.email = "didier@ivorycoast.com"
+        teacher.password = "d1DierDr0gb@"
+        teacher.isDefault = false
+        return teacher
     }
 }

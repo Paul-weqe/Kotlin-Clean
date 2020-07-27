@@ -12,14 +12,14 @@ class TestCreateStudent {
     var repo = TestStudentRepo()
 
     @Test
-    fun createFirstBasicValueUser(){
+    fun createFirstBasicValueStudent(){
         var createStudent = CreateStudent(repo, createFirstStudent())
         var createdStudent = createStudent.execute()
         assertEquals(createdStudent.id, 1)
     }
 
     @Test
-    fun testCreateTwoValidUsers(){
+    fun testCreateTwoValidStudents(){
         var createStudent = CreateStudent(repo, createFirstStudent())
         createStudent.execute()
         createStudent = CreateStudent(repo, createSecondStudent())
@@ -28,18 +28,18 @@ class TestCreateStudent {
     }
 
     @Test
-    fun testCreateTwoUsersWithSameEmail(){
+    fun testCreateTwoStudentsWithSameEmail(){
         var createStudent = CreateStudent(repo, createFirstStudent())
         createStudent.execute()
         createStudent = CreateStudent(repo, createFirstStudent())
         var exception = assertFailsWith<AlreadyExistsException>{ 
             createStudent.execute()
         }
-        assertEquals(exception.message, "Student with credentials " + createFirstStudent().toString() +" already exists in the system")
+        assertEquals(exception.message, "credentials " + createFirstStudent().toString() +" already exists in the system")
     }
 
     @Test
-    fun testCreateUserWithAnInvalidEmail(){
+    fun testCreateStudentWithAnInvalidEmail(){
         val student = createFirstStudent()
         student.email = "thisisinvalidemail"
         val createStudent = CreateStudent(repo, student)
@@ -72,20 +72,22 @@ class TestCreateStudent {
     }
 
     fun createFirstStudent(): Student {
-        return Student(
-            firstName = "Paul",
-            lastName = "Scholes",
-            email = "paul.scholes@england.com",
-            password = "p@ulSchole5Pa55word"
-        )
+        var student = Student()
+        student.firstName = "Paul"
+        student.lastName = "Scholes"
+        student.email = "paul.scholes@england.com"
+        student.password = "p@ulSchole5Pa55word"
+        student.isDefault = false
+        return student
     }
 
     fun createSecondStudent(): Student {
-        return Student(
-            firstName = "Didier",
-            lastName = "Drogba",
-            email = "didier@ivorycoast.com",
-            password = "d1DierDr0gb@"
-        )
+        var student = Student()
+        student.firstName = "Didier"
+        student.lastName = "Drogba"
+        student.email = "didier@ivorycoast.com"
+        student.password = "d1DierDr0gb@"
+        student.isDefault = false
+        return student
     }
 }
