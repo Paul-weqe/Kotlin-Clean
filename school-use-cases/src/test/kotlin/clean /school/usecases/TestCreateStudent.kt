@@ -35,7 +35,7 @@ class TestCreateStudent {
         var exception = assertFailsWith<AlreadyExistsException>{ 
             createStudent.execute()
         }
-        assertEquals(exception.message, "credentials " + createFirstStudent().toString() +" already exists in the system")
+        assertEquals(exception.message, createFirstStudent().entityName + " credentials " + createFirstStudent().toString() +" already exists in the system")
     }
 
     @Test

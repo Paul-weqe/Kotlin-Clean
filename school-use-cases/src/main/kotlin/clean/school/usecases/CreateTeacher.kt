@@ -19,7 +19,7 @@ class CreateTeacher {
     // carry out the create user functionality
     fun execute(): Teacher {
         if (!credentialsAreUnique()) {
-            throw AlreadyExistsException("credentials " + teacher.toString() +" already exists in the system")
+            throw AlreadyExistsException(teacher.entityName +" credentials " + teacher.toString() +" already exists in the system")
         } else if (!BaseValidation.validateEmail(teacher.email)){
             throw BaseException("Email " + teacher.email + " is not a valid email")
         } else if (BaseValidation.validateInputContainsSpecialCharacter(teacher.firstName)){

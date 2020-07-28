@@ -6,7 +6,6 @@ import clean.school.exceptions.AlreadyExistsException
 import clean.school.exceptions.BaseException
 import clean.school.validation.BaseValidation
 
-// class CreateStudent(userRepository: IStudentRepository, user: Student): CreateUser<IStudentRepository, Student>(userRepository, user)
 class CreateStudent {
     var studentRepository: IStudentRepository 
     var student: Student
@@ -19,7 +18,7 @@ class CreateStudent {
     // carry out the create user functionality
     fun execute(): Student {
         if (!credentialsAreUnique()) {
-            throw AlreadyExistsException("credentials " + student.toString() +" already exists in the system")
+            throw AlreadyExistsException(student.entityName +" credentials " + student.toString() +" already exists in the system")
         } else if (!BaseValidation.validateEmail(student.email)){
             throw BaseException("Email " + student.email + " is not a valid email")
         } else if (BaseValidation.validateInputContainsSpecialCharacter(student.firstName)){
