@@ -4,7 +4,7 @@
 
   <properties>
     <kotlin.version>1.3.50</kotlin.version>
-    <junit.version>4.12</junit.version>
+    <junit.version>4.13.1</junit.version>
   </properties>
 
   <packaging>jar</packaging>
